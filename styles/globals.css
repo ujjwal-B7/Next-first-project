@@ -1,0 +1,38 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, Helvetica, sans-serif;
+}
+::-webkit-scrollbar{
+    display: none;
+}
+.main-bg{
+background-color: #222831;
+color: #EEEEEE;
+width: 100%;
+min-height: 100vh;
+}
+.primary-bg{
+background-color: #222831;
+
+}
+.secondary-bg{
+    background-color: #31363F;
+}
+.secondary-text{
+    color: #31363F;
+}
+.third-bg{
+    background-color: #76ABAE;
+}
+.third-text{
+    color: #76ABAE;
+}
+.fourth-bg{
+    background-color: #EEEEEE;
+}
