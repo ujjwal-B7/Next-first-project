@@ -19,7 +19,9 @@ min-height: 100vh;
 }
 .primary-bg{
 background-color: #222831;
-
+}
+.primary-text{
+    color:#222831;
 }
 .secondary-bg{
     background-color: #31363F;

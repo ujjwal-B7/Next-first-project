@@ -7,7 +7,7 @@ import { signIn, signOut, useSession, getProviders } from "next-auth/react";
 const Nav = () => {
   const { data: session } = useSession();
   const [providers, setProviders] = useState(null);
-
+  const [showProfile, setShowProfile] = useState(false);
   useEffect(() => {
     const setUpProviders = async () => {
       const response = await getProviders();
@@ -31,21 +31,33 @@ const Nav = () => {
               >
                 Create Prompt
               </Link>
-              <button
-                type="button"
-                className="border-2 rounded-xl px-6 py-[4px]"
-                onClick={() => signOut()}
-              >
-                Sign Out
-              </button>
               <div>
                 <Image
                   src={session?.user.image}
                   width={40}
                   height={40}
                   alt="profile"
-                  className="rounded-full object-cover"
+                  className="rounded-full object-cover relative"
+                  onClick={() => setShowProfile(!showProfile)}
                 />
+                {showProfile && (
+                  <div className="secondary-bg absolute top-16 w-40  rounded p-2">
+                    <Link
+                      href="/profile"
+                      onClick={() => setShowProfile(!showProfile)}
+                    >
+                      Profile
+                    </Link>
+                    <br />
+                    <button
+                      type="button"
+                      className="opacity-70"
+                      onClick={() => signOut()}
+                    >
+                      Sign Out
+                    </button>
+                  </div>
+                )}
               </div>
             </div>
           </>

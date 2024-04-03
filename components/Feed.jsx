@@ -1,15 +1,32 @@
 "use client";
 import { useState, useEffect } from "react";
 import PromptCard from "@components/Prompt";
+
+const handleEdit = (_id) => {};
+const handleDelete = async (_id) => {
+  try {
+    const response = await fetch("/api/prompt/delete", {
+      method: "DELETE",
+      body: {
+        _id: _id,
+      },
+    });
+  } catch (error) {
+    console.log(error);
+  }
+};
+
 const PromptCardList = ({ data, handleTagClick }) => {
   return (
     <>
-      <div className="mt-16 flex flex-wrap gap-10">
+      <div className="mt-16 flex mx-4 flex-wrap gap-10">
         {data.map((data) => (
           <PromptCard
             key={data._id}
             data={data}
             handleTagClick={handleTagClick}
+            handleEdit={handleEdit}
+            handleDelete={handleDelete}
           />
         ))}
       </div>
