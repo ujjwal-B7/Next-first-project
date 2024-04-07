@@ -53,14 +53,16 @@ const Feed = () => {
     <section className="flex justify-center flex-col items-center">
       <form>
         <input
-          className="fourth-bg py-1.5 mt-5 w-[20rem] pl-2 rounded shadow secondary-text"
+          className="fourth-bg py-1.5 mt-5 w-[30rem] pl-2 rounded shadow secondary-text"
           type="text"
           value={search}
           onChange={handleSearch}
           placeholder="Search for a prompt or a username"
         />
       </form>
-      <PromptCardList data={posts} handleTagClick={() => {}} />
+      <div className="lg:px-52 px-10 pb-10">
+        <PromptCardList data={posts} handleTagClick={() => {}} />
+      </div>
     </section>
   );
 };

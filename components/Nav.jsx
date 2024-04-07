@@ -16,7 +16,7 @@ const Nav = () => {
     setUpProviders();
   }, []);
   return (
-    <nav className=" primary-bg items-center flex justify-between h-16 w-full sticky top-0 lg:px-52 px-10 shadow-xl">
+    <nav className="z-50 primary-bg items-center flex justify-between h-16 w-full sticky top-0 lg:px-52 px-10 shadow-xl">
       <Link href="/" className="font-semibold text-3xl">
         UB
       </Link>
@@ -27,7 +27,7 @@ const Nav = () => {
             <div className="flex gap-7 items-center">
               <Link
                 href="/create-prompt"
-                className="fourth-bg secondary-text rounded-xl px-6 py-[4px] hover:opacity-95"
+                className="secondary-bg rounded-xl px-6 py-[4px] hover:opacity-95"
               >
                 Create Prompt
               </Link>

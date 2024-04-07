@@ -9,7 +9,7 @@ const Form = ({ post, handler, setPost, type }) => {
             Prompt
           </label>
           <textarea
-            className="secondary-text h-60 p-1 rounded fourth-bg"
+            className="secondary-text text-sm h-60 p-2 rounded fourth-bg"
             value={post.prompt}
             onChange={(e) => setPost({ ...post, prompt: e.target.value })}
             placeholder="Write your prompt here..."
