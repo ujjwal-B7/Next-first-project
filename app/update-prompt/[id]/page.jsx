@@ -22,7 +22,10 @@ const EditPrompt = () => {
     const getPromptDetails = async () => {
       const prompt = await fetch(`/api/prompt/${promptId}`);
       const data = await prompt.json();
-      setPost(data);
+      setPost({
+        prompt: data.prompt,
+        tag: data.tag,
+      });
     };
     if (promptId) getPromptDetails();
   }, [promptId]);
@@ -47,7 +50,7 @@ const EditPrompt = () => {
       setSubmitting(false);
     }
   };
-  
+
   return (
     <Form
       type="Edit"

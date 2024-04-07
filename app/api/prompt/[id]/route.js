@@ -18,20 +18,20 @@ export const GET = async (req, { params }) => {
 };
 
 export const PATCH = async (req, { params }) => {
-  const { prompt, tag } = req.json();
+  const { prompt, tag } = await req.json();
+  console.log(prompt, tag);
   try {
     // best techstack for 2024
     await connectDB();
-
-    const prompt = await Prompt.findByIdAndUpdate(params.id, {
+    const singlePrompt = await Prompt.findByIdAndUpdate(params.id, {
       prompt,
       tag,
     }).populate("creator");
-    if (!prompt) {
+    if (!singlePrompt) {
       return new Response("No prompt match the id", { status: 404 });
     }
     // return res.status(201).json({ success: true, prompt });
-    return new Response(JSON.stringify(prompt), { status: 200 });
+    return new Response(JSON.stringify(singlePrompt), { status: 200 });
   } catch (error) {
     return new Response("Failed to fetch prompts", { status: 500 });
   }
@@ -40,8 +40,10 @@ export const PATCH = async (req, { params }) => {
 export const DELETE = async (req, { params }) => {
   try {
     // best techstack for 2024
+    console.log(params.id);
     await connectDB();
-    await Prompt.deleteOne(params._id);
+    await Prompt.findByIdAndDelete(params.id);
+
     // return res.status(201).json({ success: true, newPrompt });
     return new Response("Prompt Deleted succesfully", { status: 201 });
   } catch (error) {

@@ -39,6 +39,8 @@ const CreatePrompt = () => {
       type="Create"
       post={post}
       setPost={setPost}
+      submitting={submitting}
+      setSubmitting={setSubmitting}
       handler={createPromptHanlder}
     />
   );

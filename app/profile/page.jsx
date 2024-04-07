@@ -22,22 +22,30 @@ const Profile = () => {
     router.push(`/update-prompt?id=${_id}`);
   };
   const handleDelete = async (_id) => {
-    console.log("idddddddddddddddddddddd", _id);
-    try {
-      const response = await fetch(`/api/prompt/${_id}`, {
-        method: "DELETE",
-      });
-      fetchUserData();
-      console.log("idddddddddddddddddddddd", _id);
-    } catch (error) {
-      console.log(error);
+    const hasConfirmed = confirm(
+      "Are you sure, you want to delete the prompt?"
+    );
+    if (hasConfirmed) {
+      try {
+        await fetch(`/api/prompt/${_id}`, {
+          method: "DELETE",
+        });
+        const filteredPosts = myposts.filter((p) => p._id !== _id);
+        setMyPosts(filteredPosts);
+      } catch (error) {
+        console.log(error);
+      }
     }
   };
   return (
-    <div>
+    <div className="max-w-screen-xl mx-auto px-20">
+      <h1 className=" text-3xl font-semibold text-orange-400 pt-10">
+        My Profile
+      </h1>
+      <p className="pb-5">Welcome to your personalized profile</p>
       {myposts.map((post) => (
         <>
-          <section className="max-w-screen-xl mx-auto px-20">
+          <section className="pb-4">
             <div className="p-4 rounded flex-1 relative shadow-md mt-5">
               <div className=" flex">
                 <div className="flex">

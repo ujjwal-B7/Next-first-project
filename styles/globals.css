@@ -38,3 +38,6 @@ background-color: #222831;
 .fourth-bg{
     background-color: #EEEEEE;
 }
+.prompt-div{
+    height: fit-content;
+}

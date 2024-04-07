@@ -41,14 +41,15 @@ const Nav = () => {
                   onClick={() => setShowProfile(!showProfile)}
                 />
                 {showProfile && (
-                  <div className="secondary-bg absolute top-16 w-40  rounded p-2">
-                    <Link
-                      href="/profile"
-                      onClick={() => setShowProfile(!showProfile)}
-                    >
-                      Profile
-                    </Link>
-                    <br />
+                  <div className="secondary-bg absolute top-16 w-40  rounded px-2 py-3 space-y-2">
+                    <div>
+                      <Link
+                        href="/profile"
+                        onClick={() => setShowProfile(!showProfile)}
+                      >
+                        Profile
+                      </Link>
+                    </div>
                     <button
                       type="button"
                       className="opacity-70"

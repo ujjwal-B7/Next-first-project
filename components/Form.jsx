@@ -1,15 +1,23 @@
 import Link from "next/link";
-const Form = ({ post, handler, setPost, type }) => {
+const Form = ({ post, handler, setPost, type, submitting, setSubmitting }) => {
   return (
     <>
       <section className="flex justify-center items-center h-screen w-full ">
-        <form onSubmit={handler} className=" flex flex-col space-y-4 w-[20rem]">
-          <h1 className="text-2xl text-orange-400">{type} Prompt</h1>
+        <form onSubmit={handler} className=" flex flex-col space-y-4 w-[40%]">
+          <div className="mb-5">
+            <h1 className="font-semibold text-3xl text-orange-400 pb-2">
+              {type} Prompt
+            </h1>
+            <p className="opacity-70">
+              {type} and share amazing prompts with the world and let your
+              imagination run wild with any AI-powered platform
+            </p>
+          </div>
           <label htmlFor="prompt" className="text-lg">
             Prompt
           </label>
           <textarea
-            className="secondary-text text-sm h-60 p-2 rounded fourth-bg"
+            className="secondary-bg text-sm h-60 p-2 rounded"
             value={post.prompt}
             onChange={(e) => setPost({ ...post, prompt: e.target.value })}
             placeholder="Write your prompt here..."
@@ -17,7 +25,7 @@ const Form = ({ post, handler, setPost, type }) => {
           ></textarea>
           <label htmlFor="tag">Tag (#webdevelopment,#ideas,#product)</label>
           <input
-            className="secondary-text p-1 rounded fourth-bg"
+            className="secondary-bg p-2 rounded"
             type="text"
             required
             value={post.tag}
@@ -26,13 +34,16 @@ const Form = ({ post, handler, setPost, type }) => {
           />
           <div className="space-x-2">
             <span>
-              <Link className="px-12  fourth-text py-1.5 rounded" href="/">
+              <Link
+                className="secondary-bg px-12  fourth-text py-2 rounded"
+                href="/"
+              >
                 Cancel
               </Link>
             </span>
             <input
               type="submit"
-              value="Create"
+              value={submitting ? type + "..." : type}
               className="px-12 bg-orange-600 fourth-text py-1 rounded"
             />
           </div>
