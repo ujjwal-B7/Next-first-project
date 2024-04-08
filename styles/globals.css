@@ -41,3 +41,6 @@ background-color: #222831;
 .prompt-div{
     height: fit-content;
 }
+textarea:focus,input:focus{
+    outline:1px solid #EEEEEE;
+}

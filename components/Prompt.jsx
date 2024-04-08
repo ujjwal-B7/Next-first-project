@@ -4,7 +4,7 @@ import Image from "next/image";
 import { useSession } from "next-auth/react";
 import { usePathname, useRouter } from "next/navigation";
 import { useState } from "react";
-const Prompt = ({ data, handleTagClick, handleEdit, handleDelete }) => {
+const Prompt = ({ data, handleTagClick }) => {
   const [copy, setCopy] = useState("");
   const [isCopied, setIsCopied] = useState(false);
   const [showTick, setShowTick] = useState(true);
@@ -84,7 +84,12 @@ const Prompt = ({ data, handleTagClick, handleEdit, handleDelete }) => {
         </span>
       </div>
       <p>{data.prompt}</p>
-      <h2 className="text-orange-400 pt-4 pb-2">#{data.tag}</h2>
+      <h2
+        className="text-orange-400 pt-4 pb-2 cursor-pointer hover:underline underline-offset-4"
+        onClick={() => handleTagClick(data.tag)}
+      >
+        #{data.tag}
+      </h2>
     </div>
   );
 };

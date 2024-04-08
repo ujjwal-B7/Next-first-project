@@ -44,7 +44,7 @@ const Form = ({ post, handler, setPost, type, submitting, setSubmitting }) => {
             <input
               type="submit"
               value={submitting ? type + "..." : type}
-              className="px-12 bg-orange-600 fourth-text py-1 rounded"
+              className="cursor-pointer px-12 bg-orange-600 fourth-text py-1 rounded"
             />
           </div>
         </form>
