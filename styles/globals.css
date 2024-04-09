@@ -44,3 +44,6 @@ background-color: #222831;
 textarea:focus,input:focus{
     outline:1px solid #EEEEEE;
 }
+.hover_here:hover .children{
+display: block;
+}

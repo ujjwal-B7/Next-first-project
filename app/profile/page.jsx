@@ -1,7 +1,7 @@
 "use client";
 import { useSession } from "next-auth/react";
 import React, { useState, useEffect } from "react";
-import { useRouter } from "next/navigation";
+import { useParams, useRouter } from "next/navigation";
 import Image from "next/image";
 import Link from "next/link";
 
@@ -21,6 +21,7 @@ const Profile = () => {
   const handleEdit = (_id) => {
     router.push(`/update-prompt?id=${_id}`);
   };
+
   const handleDelete = async (_id) => {
     const hasConfirmed = confirm(
       "Are you sure, you want to delete the prompt?"
@@ -68,26 +69,28 @@ const Profile = () => {
               </div>
               <p>{post.prompt}</p>
               <h2 className="text-orange-400 pt-4 pb-2">#{post.tag}</h2>
-              <div className="space-x-5 mt-4">
-                <Link
-                  className="text-green-500 underline underline-offset-4"
-                  href={`/update-prompt/${post._id}`}
-                >
-                  Edit
-                </Link>
-                {/* <button
+              {session?.user.id && (
+                <div className="space-x-5 mt-4">
+                  <Link
+                    className="text-green-500 underline underline-offset-4"
+                    href={`/update-prompt/${post._id}`}
+                  >
+                    Edit
+                  </Link>
+                  {/* <button
                   className="text-green-500 underline underline-offset-4"
                   onClick={() => handleEdit(post._id)}
                 >
                   Edit
                 </button> */}
-                <button
-                  className="text-red-600 underline underline-offset-4"
-                  onClick={() => handleDelete(post._id)}
-                >
-                  Delete
-                </button>
-              </div>
+                  <button
+                    className="text-red-600 underline underline-offset-4"
+                    onClick={() => handleDelete(post._id)}
+                  >
+                    Delete
+                  </button>
+                </div>
+              )}
             </div>
           </section>
         </>
