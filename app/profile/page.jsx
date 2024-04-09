@@ -37,35 +37,37 @@ const Profile = () => {
       }
     }
   };
+
   return (
     <div className="max-w-screen-xl mx-auto px-20">
-      <h1 className=" text-3xl font-semibold text-orange-400 pt-10">
-        My Profile
+      <h1 className="pt-10 text-2xl">
+        <span className="text-3xl font-semibold text-orange-400 pr-4">
+          {session?.user.name}'s
+        </span>
+        Profile
       </h1>
       <p className="pb-5">Welcome to your personalized profile</p>
       {myposts.map((post) => (
         <>
           <section className="pb-4">
             <div className="p-4 rounded flex-1 relative shadow-md mt-5">
-              <div className=" flex">
-                <div className="flex">
-                  <span className="w-16 h-16 rounded-full">
-                    <Image
-                      width={40}
-                      height={40}
-                      className="rounded-full object-cover"
-                      src={post.creator.image}
-                      alt="creators_image"
-                    ></Image>
-                  </span>
-                  <div>
-                    <h1>{post.creator.username}</h1>
-                    <h1 className="opacity-70 text-xs">{post.creator.email}</h1>
-                  </div>
+              <div className="flex">
+                <span className="w-16 h-16 rounded-full">
+                  <Image
+                    width={40}
+                    height={40}
+                    className="rounded-full object-cover"
+                    src={post.creator.image}
+                    alt="creators_image"
+                  ></Image>
+                </span>
+                <div>
+                  <h1>{post.creator.username}</h1>
+                  <h1 className="opacity-70 text-xs">{post.creator.email}</h1>
                 </div>
               </div>
               <p>{post.prompt}</p>
-              <h2 className="text-orange-400 pt-4 pb-2">{post.tag}</h2>
+              <h2 className="text-orange-400 pt-4 pb-2">#{post.tag}</h2>
               <div className="space-x-5 mt-4">
                 <Link
                   className="text-green-500 underline underline-offset-4"
