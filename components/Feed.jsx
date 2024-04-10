@@ -5,7 +5,7 @@ import PromptCard from "@components/Prompt";
 const PromptCardList = ({ data, handleTagClick }) => {
   return (
     <>
-      <div className="mt-16 flex mx-4 flex-wrap gap-10">
+      <div className="max-w-screen-xl mx-auto lg:px-20 px-4 grid lg:grid-cols-3 sm:grid-cols-2 lg:gap-10 gap-5 lg:py-20 py-14">
         {data.map((data) => (
           <PromptCard
             key={data._id}
@@ -50,19 +50,20 @@ const Feed = () => {
     fetchData();
   }, []); //renders when the page loads due to empty array dependency
   return (
-    <section className="flex justify-center flex-col items-center">
-      <form>
+    <section className="flex justify-center flex-col items-center lg:pt-10 pt-5">
+      <form className="lg:w-[35%] w-[80%]">
         <input
           id="search"
           name="search"
-          className="fourth-bg py-1.5 mt-5 w-[30rem] pl-2 rounded shadow secondary-text"
+          className="fourth-bg py-1.5 mt-5 w-full pl-2 rounded shadow secondary-text"
+          data-aos="fade-up"
           type="text"
           value={search}
           onChange={(e) => setSearch(e.target.value)}
           placeholder="Search for a prompt or a username"
         />
       </form>
-      <div className="lg:px-52 px-10 pb-10">
+      <div>
         <PromptCardList
           data={searchResult.length ? searchResult : posts}
           handleTagClick={handleTagClick}

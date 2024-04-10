@@ -28,10 +28,12 @@ const Prompt = ({ data, handleTagClick }) => {
   };
 
   const { speak, cancel } = useSpeechSynthesis();
-  const handleSound = async (prompt) => {
+  const handleSound = async () => {
     setIsSpeaking(false);
-    speak({ text: prompt });
-    const textLength = prompt.split(" ").length;
+    const promptElement = document.getElementById(`promptContent_${data._id}`);
+    const promptText = promptElement.innerText;
+    speak({ text: promptText });
+    const textLength = promptText.split(" ").length;
     const readingSpeed = 150;
     const duration = Math.ceil((textLength / readingSpeed) * 60 * 1000);
     setTimeout(() => {
@@ -47,7 +49,10 @@ const Prompt = ({ data, handleTagClick }) => {
     router.push(`/profile/${_id}`);
   };
   return (
-    <div className="secondary-bg p-4 rounded max-w-[20rem] relative prompt-div">
+    <div
+      className="secondary-bg p-4 rounded w-full relative prompt-div shadow-md"
+      data-aos="zoom-in"
+    >
       {/* {isCopied && (
         <div className="secondary-bg absolute -top-9 p-2 right-0 text-xs">
           Copied
@@ -72,12 +77,28 @@ const Prompt = ({ data, handleTagClick }) => {
             <h1 className="opacity-70 text-xs">{data.creator.email}</h1>
           </div>
         </div>
-        <span className="flex gap-1">
+      </div>
+      <p
+        id={`promptContent_${data._id}`}
+        className="w-full lg:aspect-[5/3.4] sm:aspect-[5/3.1]  border-2 border-[#eeeeee13] p-2 rounded focus:outline focus:outline-[#eeeeee43] overflow-y-auto"
+        contentEditable="true"
+      >
+        {data.prompt}
+      </p>
+      <div className="flex justify-between mt-5 px-1">
+        <span
+          className="text-orange-400
+         pb-2 cursor-pointer hover:underline underline-offset-4"
+          onClick={() => handleTagClick(data.tag)}
+        >
+          #{data.tag}
+        </span>
+        <span className="flex gap-2">
           <Hover message={isSpeaking ? "Start Reading" : "Stop Reading"}>
             <span>
               {isSpeaking ? (
                 <svg
-                  onClick={() => handleSound(data.prompt)}
+                  onClick={handleSound}
                   xmlns="http://www.w3.org/2000/svg"
                   fill="none"
                   viewBox="0 0 24 24"
@@ -152,19 +173,6 @@ const Prompt = ({ data, handleTagClick }) => {
           </Hover>
         </span>
       </div>
-      <p
-        id={`promptContent_${data._id}`}
-        className="border-2 border-[#eeeeee13] p-2 rounded focus:outline focus:outline-[#eeeeee43]"
-        contentEditable="true"
-      >
-        {data.prompt}
-      </p>
-      <h2
-        className="text-orange-400 pt-4 pb-2 cursor-pointer hover:underline underline-offset-4"
-        onClick={() => handleTagClick(data.tag)}
-      >
-        #{data.tag}
-      </h2>
     </div>
   );
 };

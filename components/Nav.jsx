@@ -15,8 +15,9 @@ const Nav = () => {
     };
     setUpProviders();
   }, []);
+
   return (
-    <nav className="z-50 primary-bg items-center flex justify-between h-16 w-full sticky top-0 lg:px-52 px-10 shadow-xl">
+    <nav className="max-w-screen-xl mx-auto lg:px-20 px-4 z-50 primary-bg items-center flex justify-between h-16 w-full sticky top-0  shadow-xl">
       <Link href="/" className="font-semibold text-3xl">
         UB
       </Link>
@@ -27,7 +28,7 @@ const Nav = () => {
             <div className="flex gap-7 items-center">
               <Link
                 href="/create-prompt"
-                className="secondary-bg rounded-xl px-6 py-[4px] hover:opacity-95"
+                className="secondary-bg rounded-xl lg:px-6 px-5 py-[4px] hover:opacity-95"
               >
                 Create Prompt
               </Link>
@@ -41,8 +42,8 @@ const Nav = () => {
                   onClick={() => setShowProfile(!showProfile)}
                 />
                 {showProfile && (
-                  <div className="secondary-bg absolute top-16 w-40  rounded px-2 py-3 space-y-3">
-                    <div className="flex gap-3 p-1 hover:bg-[#222831] rounded">
+                  <div className="secondary-bg absolute top-16 w-40  rounded px-2 py-3 space-y-2">
+                    <div className="flex items-center gap-3 p-1 hover:bg-[#222831] rounded">
                       <span>
                         <svg
                           xmlns="http://www.w3.org/2000/svg"
@@ -68,10 +69,26 @@ const Nav = () => {
                     </div>
                     <button
                       type="button"
-                      className="primary-bg w-full py-1 rounded"
+                      className="primary-bg w-full py-1 items-center gap-3 rounded flex px-1"
                       onClick={() => signOut()}
                     >
-                      Sign Out
+                      <span>
+                        <svg
+                          xmlns="http://www.w3.org/2000/svg"
+                          fill="none"
+                          viewBox="0 0 24 24"
+                          stroke-width="1.5"
+                          stroke="currentColor"
+                          className="rotate-180  w-5 h-5"
+                        >
+                          <path
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                            d="M15.75 9V5.25A2.25 2.25 0 0 0 13.5 3h-6a2.25 2.25 0 0 0-2.25 2.25v13.5A2.25 2.25 0 0 0 7.5 21h6a2.25 2.25 0 0 0 2.25-2.25V15M12 9l-3 3m0 0 3 3m-3-3h12.75"
+                          />
+                        </svg>
+                      </span>
+                      <span>Sign Out</span>
                     </button>
                   </div>
                 )}
