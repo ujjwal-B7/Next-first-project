@@ -6,13 +6,16 @@ const PromptCardList = ({ data, handleTagClick }) => {
   return (
     <>
       <div className="max-w-screen-xl mx-auto lg:px-20 px-4 grid lg:grid-cols-3 sm:grid-cols-2 lg:gap-10 gap-5 lg:py-20 py-14">
-        {data.map((data) => (
-          <PromptCard
-            key={data._id}
-            data={data}
-            handleTagClick={handleTagClick}
-          />
-        ))}
+        {data &&
+          [...data]
+            .reverse()
+            .map((data) => (
+              <PromptCard
+                key={data._id}
+                data={data}
+                handleTagClick={handleTagClick}
+              />
+            ))}
       </div>
     </>
   );
@@ -31,11 +34,10 @@ const Feed = () => {
         item.prompt.toLowerCase().includes(search.toLowerCase()) ||
         item.creator.username.toLowerCase().includes(search.toLowerCase())
     );
-    console.log(filteredResults);
     if (filteredResults.length > 0) setSearchResult(filteredResults);
 
     // };
-  }, [search]);
+  }, [posts, search]);
 
   // handletagClick
   const handleTagClick = (tag) => {

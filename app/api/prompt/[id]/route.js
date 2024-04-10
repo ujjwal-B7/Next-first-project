@@ -19,7 +19,6 @@ export const GET = async (req, { params }) => {
 
 export const PATCH = async (req, { params }) => {
   const { prompt, tag } = await req.json();
-  console.log(prompt, tag);
   try {
     // best techstack for 2024
     await connectDB();
@@ -40,7 +39,6 @@ export const PATCH = async (req, { params }) => {
 export const DELETE = async (req, { params }) => {
   try {
     // best techstack for 2024
-    console.log(params.id);
     await connectDB();
     await Prompt.findByIdAndDelete(params.id);
 

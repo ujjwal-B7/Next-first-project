@@ -12,7 +12,6 @@ const CreatePrompt = () => {
     prompt: "",
     tag: "",
   });
-  console.log("hello id", session?.user.id);
   const createPromptHanlder = async (e) => {
     e.preventDefault();
     setSubmitting(true);
