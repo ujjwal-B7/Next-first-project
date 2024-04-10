@@ -7,26 +7,26 @@ import { useSpeechSynthesis } from "react-speech-kit";
 import { useState } from "react";
 import Hover from "./Hover";
 const Prompt = ({ data, handleTagClick }) => {
-  const [copy, setCopy] = useState("");
   const [isCopied, setIsCopied] = useState(false);
   const [showTick, setShowTick] = useState(true);
   const [isSpeaking, setIsSpeaking] = useState(true);
   const router = useRouter();
-  const copyPrompt = async (prompt) => {
+  const copyPrompt = async (id) => {
+    const promptElement = document.getElementById(`promptContent_${data._id}`);
+    const promptText = promptElement.innerText;
     try {
-      await navigator.clipboard.writeText(prompt);
-      setCopy(prompt);
-      setShowTick(false);
+      await navigator.clipboard.writeText(promptText);
       setIsCopied(true);
-      setInterval(() => {
+      setShowTick(false);
+      setTimeout(() => {
         setIsCopied(false);
         setShowTick(true);
       }, 2000);
-      console.log("Prompt copied to clipboard:", prompt);
     } catch (error) {
       console.error("Failed to copy prompt:", error);
     }
   };
+
   const { speak, cancel } = useSpeechSynthesis();
   const handleSound = async (prompt) => {
     setIsSpeaking(false);
@@ -116,7 +116,7 @@ const Prompt = ({ data, handleTagClick }) => {
             </span>
           </Hover>
           <Hover message={showTick ? "Copy Prompt" : "Copied"}>
-            <span onClick={() => copyPrompt(data.prompt)}>
+            <span onClick={copyPrompt}>
               {showTick ? (
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
@@ -152,7 +152,13 @@ const Prompt = ({ data, handleTagClick }) => {
           </Hover>
         </span>
       </div>
-      <p contentEditable="true">{data.prompt}</p>
+      <p
+        id={`promptContent_${data._id}`}
+        className="border-2 border-[#eeeeee13] p-2 rounded focus:outline focus:outline-[#eeeeee43]"
+        contentEditable="true"
+      >
+        {data.prompt}
+      </p>
       <h2
         className="text-orange-400 pt-4 pb-2 cursor-pointer hover:underline underline-offset-4"
         onClick={() => handleTagClick(data.tag)}
