@@ -43,7 +43,7 @@ const Nav = () => {
                     onClick={() => setShowProfile(!showProfile)}
                   />
                   {showProfile && (
-                    <div className="secondary-bg absolute top-16 w-40  rounded px-2 py-3 space-y-2">
+                    <div className="secondary-bg absolute lg:right-24 right-7 top-[4.3rem] w-40  rounded px-2 py-3 space-y-2">
                       <div className="flex items-center gap-3 p-1 hover:bg-[#222831] rounded">
                         <span>
                           <svg
@@ -104,7 +104,7 @@ const Nav = () => {
                     type="button"
                     key={provider.name}
                     onClick={() => signIn(provider.id)}
-                    className="secondary-bg px-10 py-2 rounded-3xl"
+                    className="primary-bg px-10 py-2 rounded-3xl"
                   >
                     Sign In
                   </button>

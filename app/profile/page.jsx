@@ -40,7 +40,7 @@ const Profile = () => {
   };
 
   return (
-    <div className="max-w-screen-xl mx-auto px-20">
+    <div className="max-w-screen-xl mx-auto lg:px-20 px-4">
       <h1 className="pt-10 text-2xl">
         <span className="text-3xl font-semibold text-orange-400 pr-4">
           {session?.user.name}&apos;s

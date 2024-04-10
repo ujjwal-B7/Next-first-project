@@ -2,8 +2,11 @@ import Link from "next/link";
 const Form = ({ post, handler, setPost, type, submitting, setSubmitting }) => {
   return (
     <>
-      <section className="flex justify-center items-center h-screen w-full ">
-        <form onSubmit={handler} className=" flex flex-col space-y-4 w-[40%]">
+      <section className="flex justify-center items-center lg:h-[90vh] w-full lg:py-0 py-10 px-4">
+        <form
+          onSubmit={handler}
+          className=" flex flex-col space-y-4 lg:w-[40%] sm:w-[70%]"
+        >
           <div className="mb-5">
             <h1 className="font-semibold text-3xl text-orange-400 pb-2">
               {type} Prompt

@@ -19,7 +19,7 @@ const Home = () => {
         <p className="text-2xl font-semibold text-orange-400 text-center">
           AI prompting tool
         </p>
-        <p className="w-[60%]  pt-5 text-center">
+        <p className="lg:w-[60%] w-[90%]  pt-5 text-center">
           An open-source AI prompting tool for modern world to discover, create
           and share creative prompts
         </p>
