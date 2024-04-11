@@ -17,7 +17,7 @@ const Nav = () => {
   }, []);
 
   return (
-    <header className="sticky top-1 z-50 px-2">
+    <header className="sticky top-0 z-50 px-2">
       <nav className="max-w-screen-xl mx-auto lg:px-20 px-4 secondary-bg items-center flex justify-between h-16 w-full shadow-xl rounded-[2rem]">
         <Link href="/" className="font-semibold sm:text-3xl text-2xl">
           SLASH
@@ -44,7 +44,11 @@ const Nav = () => {
                   />
                   {showProfile && (
                     <div className="secondary-bg absolute lg:right-24 right-7 top-[4.3rem] w-40  rounded px-2 py-3 space-y-2">
-                      <div className="flex items-center gap-3 p-1 hover:bg-[#222831] rounded">
+                      <Link
+                        href={`/profile/${session?.user.id}`}
+                        onClick={() => setShowProfile(!showProfile)}
+                        className="flex items-center gap-3 p-1 hover:bg-[#222831] rounded"
+                      >
                         <span>
                           <svg
                             xmlns="http://www.w3.org/2000/svg"
@@ -61,13 +65,8 @@ const Nav = () => {
                             />
                           </svg>
                         </span>
-                        <Link
-                          href="/profile"
-                          onClick={() => setShowProfile(!showProfile)}
-                        >
-                          Profile
-                        </Link>
-                      </div>
+                        <span>Profile</span>
+                      </Link>
                       <button
                         type="button"
                         className="primary-bg w-full py-1 items-center gap-3 rounded flex px-1"

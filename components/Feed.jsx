@@ -52,7 +52,7 @@ const Feed = () => {
     fetchData();
   }, []); //renders when the page loads due to empty array dependency
   return (
-    <section className="flex justify-center flex-col items-center lg:pt-10 pt-5">
+    <section className="flex justify-center flex-col items-center pt-5">
       <form className="lg:w-[35%] w-[80%]">
         <input
           id="search"
