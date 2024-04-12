@@ -10,10 +10,10 @@ const Home = () => {
   return (
     <>
       <section
-        className="w-full lg:pt-32 pt-20 flex flex-col justify-center items-center"
+        className="w-full lg:pt-32 pt-40 flex flex-col justify-center items-center"
         data-aos="fade-up"
       >
-        <h1 className="lg:text-6xl text-5xl font-bold text-center">
+        <h1 className="lg:text-6xl text-5xl font-bold text-center pb-5">
           Discover & Share
         </h1>
         <p className="text-2xl font-semibold text-orange-400 text-center">
