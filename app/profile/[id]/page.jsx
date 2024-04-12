@@ -33,7 +33,7 @@ const OthersProfile = () => {
       {myposts.map((post) => (
         <>
           <section className="pb-4">
-            <div className="p-4 rounded flex-1 relative shadow-md mt-5">
+            <div className="p-4 rounded flex-1 relative shadow-custom mt-5">
               <div className="flex">
                 <span className="w-16 h-16 rounded-full">
                   <Image

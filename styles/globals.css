@@ -47,3 +47,6 @@ textarea:focus,input:focus{
 .hover_here:hover .children{
 display: block;
 }
+.shadow-custom{
+    box-shadow: 1px 0.5px 15px rgba(0, 0, 0, 0.326);
+}
