@@ -4,7 +4,12 @@ import React, { useState, useEffect } from "react";
 import { useParams } from "next/navigation";
 import Image from "next/image";
 import Link from "next/link";
+import AOS from "aos";
+import "aos/dist/aos.css";
 const OthersProfile = () => {
+  useEffect(() => {
+    AOS.init();
+  }, []);
   const { id } = useParams();
   const { data: session } = useSession();
   const [myposts, setMyPosts] = useState([]);
@@ -32,7 +37,7 @@ const OthersProfile = () => {
       <p className="pb-5">Welcome to your personalized profile</p>
       {myposts.map((post) => (
         <>
-          <section className="pb-4">
+          <section className="pb-4" data-aos="fade-up">
             <div className="p-4 rounded flex-1 relative shadow-custom mt-5">
               <div className="flex">
                 <span className="w-16 h-16 rounded-full">
