@@ -13,7 +13,7 @@ const Hover = ({ message, children, width, color, bg }) => {
           className={`hidden  absolute ${
             color ? `secondary-bg` : "primary-bg"
           } ${
-            width ? `w-${width}` : "w-[5.1rem]"
+            width ? "w-[7rem]" : "w-[5.1rem]"
           } p-1 text-center  rounded right-0 -top-7 text-xs children`}
         >
           {message}

@@ -6,7 +6,7 @@ import Hover from "./Hover";
 import { useState, useEffect } from "react";
 
 const Form = ({ post, handler, setPost, type, submitting, setSubmitting }) => {
-  const { transcript, resetTranscript, listening } = useSpeechRecognition();
+  const { transcript, listening } = useSpeechRecognition();
   const [recording, setRecording] = useState(true);
 
   useEffect(() => {
@@ -51,9 +51,9 @@ const Form = ({ post, handler, setPost, type, submitting, setSubmitting }) => {
               Prompt
             </label>
             <Hover
-              bg={`secondary-bg`}
-              width={"[10rem]"}
-              color={`secondary-bg`}
+              bg={true}
+              width={true}
+              color={true}
               message={listening ? "Stop Recording" : "Record Prompt"}
             >
               <span>
@@ -99,6 +99,7 @@ const Form = ({ post, handler, setPost, type, submitting, setSubmitting }) => {
             </Hover>
           </div>
           <textarea
+            name="prompt"
             className="secondary-bg text-sm h-60 p-2 rounded"
             value={post.prompt}
             onChange={(e) => setPost({ ...post, prompt: e.target.value })}
@@ -107,6 +108,7 @@ const Form = ({ post, handler, setPost, type, submitting, setSubmitting }) => {
           />
           <label htmlFor="tag">Tag (#webdevelopment,#ideas,#product)</label>
           <input
+            name="tag"
             className="secondary-bg p-2 rounded"
             type="text"
             required
