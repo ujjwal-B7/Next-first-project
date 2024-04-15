@@ -26,6 +26,18 @@ const OthersProfile = () => {
     if (id) fetchUserData();
   }, [id]);
 
+  const handleDelete = async (id) => {
+    window.confirm("Are you sure, you want to delete?");
+    try {
+      await fetch(`/api/prompt/${id}`, {
+        method: "DELETE",
+      });
+      const filteredPosts = myposts.filter((post) => post._id !== id);
+      setMyPosts(filteredPosts);
+    } catch (error) {
+      console.log(error);
+    }
+  };
   return (
     <div className="max-w-screen-xl mx-auto lg:px-20 px-4">
       <h1 className="pt-10 text-2xl">

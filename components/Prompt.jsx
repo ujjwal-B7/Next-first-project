@@ -3,13 +3,14 @@ import Link from "next/link";
 import Image from "next/image";
 import { useSession } from "next-auth/react";
 import { usePathname, useRouter } from "next/navigation";
-import { useSpeechSynthesis } from "react-speech-kit";
+import { useSpeechSynthesis, useSpeechRecognition } from "react-speech-kit";
 import { useState } from "react";
 import Hover from "./Hover";
 const Prompt = ({ data, handleTagClick }) => {
   const [isCopied, setIsCopied] = useState(false);
   const [showTick, setShowTick] = useState(true);
   const [isSpeaking, setIsSpeaking] = useState(true);
+
   const router = useRouter();
   const copyPrompt = async (id) => {
     const promptElement = document.getElementById(`promptContent_${data._id}`);
@@ -94,7 +95,7 @@ const Prompt = ({ data, handleTagClick }) => {
           #{data.tag}
         </span>
         <span className="flex gap-2">
-          <Hover message={isSpeaking ? "Start Reading" : "Stop Reading"}>
+          <Hover message={isSpeaking ? "Read Prompt" : "Stop Reading"}>
             <span>
               {isSpeaking ? (
                 <svg
