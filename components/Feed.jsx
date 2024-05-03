@@ -62,7 +62,7 @@ const Feed = () => {
           type="text"
           value={search}
           onChange={(e) => setSearch(e.target.value)}
-          placeholder="Search for a prompt or a username"
+          placeholder="Search for a prompt or a username or a tag"
         />
       </form>
       <div>
