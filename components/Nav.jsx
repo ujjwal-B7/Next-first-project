@@ -15,7 +15,6 @@ const Nav = () => {
     };
     setUpProviders();
   }, []);
-
   return (
     <header className="sticky top-0 z-50 sm:px-2">
       <nav className="max-w-screen-xl mx-auto lg:px-20 px-4 secondary-bg items-center flex justify-between h-16 w-full shadow-xl sm:rounded-[2rem]">
